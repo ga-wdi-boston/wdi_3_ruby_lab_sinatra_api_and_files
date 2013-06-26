@@ -5,4 +5,6 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 get '/' do
+
+	erb :favorites
 end
