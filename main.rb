@@ -9,5 +9,10 @@ get '/' do
 end
 
 get '/new_favorite/?:new_movie?' do
-
+	if params[:new_movie]
+		@new_movie = params[:new_movie]
+	else
+		@new_movie = " "
+	end
+	erb :new_favorite
 end
