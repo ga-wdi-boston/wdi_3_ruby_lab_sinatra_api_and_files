@@ -1,8 +1,10 @@
 <h1>List of my Favorite Flicks!</h1>
 
 <ul>
-<% @movies.each do |movie| %>
-  <li><%= movie[0] %></li>
+<% @movie_titles.each do |title| %>
+  <li><a href ="/movie/<%= "#{title}" %>"><%= "#{title}" %></a></li>
+
+
 <% end %>
 </ul>
 
