@@ -20,4 +20,5 @@ end
 
 get '/movie/:title' do
   @title = params[:title]
+  erb :movie
 end
