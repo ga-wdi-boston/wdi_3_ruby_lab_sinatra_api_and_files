@@ -5,6 +5,11 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 
+get '/about_me' do
+  erb :about_me
+end
+
+
 # Function to prep movie information
 def get_movies_hash
   movie_file = File.new('movies.csv', 'r')
