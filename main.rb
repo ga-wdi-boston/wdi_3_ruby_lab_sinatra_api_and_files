@@ -25,27 +25,13 @@ get '/' do
     file = File.new('movies.csv', "a+")
     file.puts("#{@movie_title}|#{@movie_company}")
     file.close
-    redirect to("/movies/URI::encode#{@title}")
-    #    redirect to("/movies/URI::encode#{@title.gsub(/\s/,'-')}")
+    redirect to("/movies/#{URI::encode(@movie_title)}")
 
   else
     ""
   end
   erb :root
 end
-
-=begin
-post '/' do
-  @title = params[:title]
-  movie = Imdb::Search.new(@title).movies.first
-  @movie_title = movie.title
-
-  file = File.new('movies.csv', "a+")
-  file.puts("#{@movie_title}")
-  file.close
-  redirect to("/movies/#{@title}")
-end
-=end
 
 get '/movies/:title' do
   @title = params[:title]

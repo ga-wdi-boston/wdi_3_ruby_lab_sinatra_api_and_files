@@ -2,10 +2,12 @@
 <% movie = Imdb::Search.new(this_title).movies.first %>
 <h1><%= movie.title %></h1>
 <img src="<%= movie.poster %>" height="500" /><p></p>
-<strong>Plot: </strong><%= movie.plot_summary %><br />
-<strong>Starring: </strong><%= movie.cast_members.first %> as <%= movie.cast_characters.first%><br />
-<strong>Directed by: </strong><%= movie.director.first %><br />
-<strong>Produced by: </strong><%= movie.company %><br />
-<strong>Released: </strong><%= movie.year %><br />
+<ul>
+    <li><strong>Plot: </strong><%= movie.plot_summary %></li><br />
+    <li><strong>Starring: </strong><%= movie.cast_members.first %> as <%= movie.cast_characters.first%></li><br />
+    <li><strong>Directed by: </strong><%= movie.director.first %></li><br />
+    <li><strong>Produced by: </strong><%= movie.company %></li><br />
+    <li><strong>Released: </strong><%= movie.year %></li><br />
+</ul>
 
 <p><a href="/">Back to movie list!</a></p>
