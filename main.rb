@@ -6,12 +6,11 @@ require 'imdb'
 
 
 # Function to prep movie information
-###remember to change split to |
 def get_movies_hash
   movie_file = File.new('movies.csv', 'r')
   movies_hash = {}
   movie_file.each do |line|
-    movie_array = line.split(',')
+    movie_array = line.split('|')
     title = movie_array[0]
     movies_hash[title] = movie_array
   end
@@ -29,6 +28,17 @@ end
 # This should show a single movie_array
 get '/movie/:name' do
   @name = params[:name]
+  @movies = get_movies_hash
+  @company = @movies[@name][1]
+  @genres = @movies[@name][2]
+  @length = @movies[@name][3]
+  @director = @movies[@name][4]
+  @mpaa_rating = @movies[@name][5]
+  @plot_synopsis = @movies[@name][6]
+  @tagline = @movies[@name][7]
+  @year = @movies[@name][8]
+  @poster= @movies[@name][9]
+  @release_date = @movies[@name][10]
   erb :movie
 end
 
@@ -60,7 +70,7 @@ post '/new_movie' do
   f.close
 
   #This will send you to the newly created movie
-  redirect to("/movie/#{URI::encode(@title)}")
+  redirect to("/movie/#{URI::encode(@movie_title)}")
 end
 
 
