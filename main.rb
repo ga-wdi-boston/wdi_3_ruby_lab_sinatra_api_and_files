@@ -5,5 +5,13 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 get '/' do
+  movie_file = File.new('movies.csv', 'a+')
   erb :index
+end
+
+post '/' do
+  @title = params[:title]
+  movie_file = File.new('movies.csv', 'a+')
+  @my_movie = Imdb::Search.new("Jobs").movies.first
+  movie_file.puts("#{@my_movie.title},#{@my_movie.year},#{@my_movie.director},#{@my_movie.poster}")
 end
