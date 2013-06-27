@@ -6,39 +6,42 @@ require 'imdb'
 
 
 
-
-    get '/movies' do
-
-      movies_file = File.open("/movies.csv", "+a")
-        movie = []
-        movie << ["row", "of", "CSV", "data"]
-        movie << ["another", "row"]
-      end
-
-
-
-
-    # get '/movies/:name' do
-
-    #    @name = params[:name]
-
-     #  my_movie = Imdb::Search.new(:name).movies.first
-
-     #  film = []
-
-     #  film << my_movie.title
-     #  film << my_movie.poster
-     #  film << my_movie.year
-     #  csv  << film
-
-
 get '/new_movie' do
+  @new_movie = params[:new_movie]
+  movies_file = File.new("movies.csv", "a+")
+  my_movie = Imdb::Search.new("Space Jam").movies.first
+
+  film = []
+  film << my_movie.title
+  film << my_movie.poster
+  film << my_movie.year
+  movies_file << film
+  movies_file.close
+  erb :new_movie
+end
+
+
+
+
+      # my_movie = Imdb::Search.new(:name).movies.first
+
+      # film = []
+
+      # film << my_movie.title
+      # film << my_movie.poster
+      # film << my_movie.year
+      # csv  << film
+
+
+post '/new_movie' do
 
 
  erb :new_movie
 end
 
-post '/movie' do
+
+
+get '/movie' do
 
 
 
