@@ -23,6 +23,17 @@ get '/movies/:movie_title' do
 
 end
 
+get '/new_movie' do
+  erb :new_movie
+end
+
+post '/new_movie' do
+  @title = params[:title]
+  @movie = Imdb::Search.new(@title).movies.first
+  movies = File.open('movies.csv', 'a+') do |title|
+   title.puts("#{@movie.title},#{@movie.year},#{@movie.director[0]},#{@movie.poster}")
+  end
+
 # post '/new_movie/:movie_title' do
 #   @title = params[:movie_title]
 #   @movie =
