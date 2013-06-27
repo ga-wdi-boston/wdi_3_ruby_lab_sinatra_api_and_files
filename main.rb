@@ -5,8 +5,6 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 
-
-
 get '/' do
   list_of_favorite_movies = File.new('movies.csv', 'r')
   @movies = []
