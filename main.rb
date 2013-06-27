@@ -13,17 +13,22 @@ get '/' do
     erb :movies
 end
 
-if @movie_title
-    redirect to "/movies/#{@movie_title}"
-  else
-    "What was that? Try another movie"
-  end
-  erb :search
-end
+
+# if @movie_title
+#     redirect to "/movies/#{@movie_title}"
+#   else
+#     "What was that? Try another movie"
+# end
+
+
+
 
 get '/movies/:movie_title' do
   @movie_title = params[:movie_title]
-  @movie = Imdb::Search.new(@movie_title)
+  @single_movie = []
+  movies_file = File.new('movies.csv', 'r')
+  movies_file.each do |movie_title|
+    movie_title.split
 
   if movie_title.split(',')[0] == @movie_title
       then @single_movie = movie_title.split(',')
@@ -37,11 +42,12 @@ get '/new_movie' do
 end
 
 post '/new_movie' do
-  @title = params[:title]
-  @movie = Imdb::Search.new(@title).movies.first
-  movies = File.open('movies.csv', 'a+') do |title|
-   title.puts("#{@movie.title},#{@movie.year},#{@movie.director[0]},#{@movie.poster}")
+  @movie_title = params[:movie_title]
+  @movie = Imdb::Search.new(@movie_title).movies.first
+  movies = File.open('movies.csv', 'a+') do |movie_title|
+   movie_title.puts("#{@movie.title},#{@movie.year},#{@movie.director[0]},#{@movie.poster}")
   end
+end
 
 
 
