@@ -21,8 +21,8 @@ get '/movie/:title' do
   f.each do |line|
     if line.split('| ')[0] == @single_movie
       @movie_array = line.split('| ')
-      @director_list = @movie_array[3]
-      @genre_list = @movie_array[5]
+      # @director_list = @movie_array[3]
+      # @genre_list = @movie_array[5]
     end
   end
 
@@ -39,9 +39,9 @@ post '/new_movie' do
   @title = my_new_movie.title
   @year = my_new_movie.year
   @release_date = my_new_movie.release_date
-  @director = my_new_movie.director
+  @director = my_new_movie.director[0]
   @image = my_new_movie.poster
-  @genres = my_new_movie.genres
+  @genres = my_new_movie.genres[0]
   @length = my_new_movie.length
   @tagline = my_new_movie.tagline
 
