@@ -5,12 +5,13 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 get '/' do
-
-@movie_title = params[:movie_title]
-@single_movie = []
-@movies_list = File.new('movies.csv', 'a+')
-@movies_list.each do |title|
-  title.split(',')
+  @movies = []
+  movies = File.new('movies.csv', 'r')
+  movies.each do |title|
+    @movies << title.split(',')
+  end
+    erb :movies
+end
 
 if @movie_title
     redirect to "/movies/#{@movie_title}"
@@ -24,8 +25,11 @@ get '/movies/:movie_title' do
   @movie_title = params[:movie_title]
   @movie = Imdb::Search.new(@movie_title)
 
+  if movie_title.split(',')[0] == @movie_title
+      then @single_movie = movie_title.split(',')
+    end
+  end
   erb :movie
-
 end
 
 get '/new_movie' do
