@@ -51,3 +51,8 @@ post '/new_movie' do
 
   redirect to('/')
 end
+
+get '/about' do
+
+  erb :about
+end
