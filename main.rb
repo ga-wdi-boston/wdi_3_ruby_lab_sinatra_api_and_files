@@ -42,6 +42,8 @@ post '/new_movie' do
     movie_file.puts("#{@movie.title}, #{@movie.year}, #{@movie.poster}")
 #which parameters should we add to the new movie page?
   end
+  @title= @movie.title
+  @img_src = @movie.poster
 erb :movie
 end
 
