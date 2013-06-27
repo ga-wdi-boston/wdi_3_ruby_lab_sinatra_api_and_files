@@ -31,7 +31,7 @@ title = @movie.title
 year = @movie.year
 
 output_file = File.new('movies.csv', 'a+')
-output_file.puts("#{@title}| #{@year}")
+output_file.puts("#{@title}, #{@year}")
 output_file.close
 
 rediret to '/'
