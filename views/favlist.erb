@@ -1,0 +1,23 @@
+<h1>My Favorite Shows!</h1>
+<img src="http://img.pandawhale.com/39573-Zach-Galifianakis-little-hands-5VTX.gif" width=300px />
+
+<h2><u>Here is a list of my favorite movies:</u></h2>
+<% if @movie_db_hash.count == 0 %>
+  <ul>
+    <li><i>None saved so far. Please enter a new favorite movie to create a list.</i></li>
+  </ul>
+<% else %>
+  <% @movie_db_hash.each do |x, y| %>
+  <ul>
+    <li><%= y[:title] %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<br>
+<h2><u>Add a new movie to your favorite list!</u></h2>
+
+<form action="/" method="post">
+  Enter the movie title you want to add here: <input type="text" name="movie_to_find" autofocus>
+  <button>Submit</button>
+</form>

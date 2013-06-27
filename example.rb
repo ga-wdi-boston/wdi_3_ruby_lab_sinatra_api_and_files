@@ -5,6 +5,7 @@ require 'imdb'
 
 # Use the first search result. Here I'm searching for the "Jobs" movie.
 my_movie = Imdb::Search.new("Jobs").movies.first
+# p my_movie.inspect
 puts my_movie.title
 puts my_movie.poster
 puts my_movie.year
