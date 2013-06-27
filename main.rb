@@ -41,12 +41,9 @@ end
 post '/new_movie' do
     @title = params[:title]
     @result = if @title
-    @my_movie = Imdb::Search.new("@title").movies.first
-    # @picture_url = params[:picture_url]
-    # @tagline = params[:tagline]
+    @my_movie = Imdb::Search.new("@result").movies.first
     f = File.new('movies.csv', 'a+')
-    f.puts("#{@title},#{@my_movie[:year]},director,picture url,tagline")
-    # f.puts("#{@title},#{@year},#{@director},#{@picture_url},#{@tagline}\n")
+    f.puts("#{@title},#{@my_movie.year},#{@my_movie.director},#{@my_movie.poster},#{@my_movie.tagline}")
     f.close
   end
   #This will send you to the newly created movie
