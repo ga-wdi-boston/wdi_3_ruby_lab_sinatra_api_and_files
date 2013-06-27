@@ -20,3 +20,7 @@ puts my_movie.year
 #year
 #poster
 #release_date
+
+[:id, :id=, :url, :url=, :title, :title=, :also_known_as, :also_known_as=, :cast_members, :cast_member_ids, :cast_characters, :cast_members_characters,
+ :director, :trailer_url, :genres, :languages, :countries, :length, :company, :plot, :plot_synopsis, :plot_summary, :poster, :rating, :votes, :tagline,
+ :mpaa_rating, :year, :release_date
