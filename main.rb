@@ -20,7 +20,7 @@ get '/about' do
 	@favorites = {}
 	f= File.new('movies.csv', 'r')
 	f.each do |line|
-		@favorites[line.split('|').to_sym] = line.split(',')
+		@favorites[line.split('|')[0].to_sym] = line.split('|')
 	end
 	erb :favorites
 end
@@ -29,12 +29,12 @@ get '/new_favorite/?:new_movie?' do
 	if params[:new_movie] then
 		f = File.new('movies.csv', 'a+')
 		@new_movie = Imdb::Search.new(params[:new_movie]).movies.first
-		@title = @new_movie.title
+		@title = @new_movie.title.split("(")[0]
 		@year = @new_movie.year
 		@director = @new_movie.director
 		@poster = @new_movie.poster
 		@rating = @new_movie.rating
-		f.puts "#{@title}| #{@year}| #{@director}| #{@poster}|#{@rating}\n" unless movie_exists?(@title)
+		f.puts "#{@title}|#{@year}|#{@director}|#{@poster}|#{@rating}\n" unless movie_exists?(@title)
 		f.close
 		redirect to("/movie/#{URI::encode(@title)}")
 	else
@@ -46,9 +46,9 @@ end
 get '/movie/:movie_title' do
 	f = File.new('movies.csv', 'r')
 	f.each do |line|
-		if line.split('|')[0] == "#{URI::decode(params[:movie_title])}"
-			@movie = line
-			erb :movie
+		if line.split('|')[0] == params[:movie_title].to_s
+			@movie = line.split('|')
 		end
 	end
+	erb :movie
 end

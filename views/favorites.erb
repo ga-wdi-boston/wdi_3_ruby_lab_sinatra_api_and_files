@@ -1,2 +1,6 @@
-<h1> My Favorite Movies </h1>
-
+<h2> My Favorite Movies </h2>
+<ul>
+	<%@favorites.each do |sym, movie|%>
+		<p><a href = "/movie/<%=URI::encode(movie[0])%>"><%=movie[0]%></a></p>
+	<%end%>
+</ul>
