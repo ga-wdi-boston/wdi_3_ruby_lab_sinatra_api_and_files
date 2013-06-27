@@ -34,18 +34,21 @@ get '/movie/:name' do
 end
 
 get '/new_movie' do
+  @name = params[:name]
+  @movies = get_movie_hash
+  @movie = @movies[@name]
   erb :new_movie
 end
 
 # Create a new movie by sending a POST request to this URL
 post '/new_movie' do
     @title = params[:title]
-    @result = if @title
-    @my_movie = Imdb::Search.new("@result").movies.first
-    f = File.new('movies.csv', 'a+')
-    f.puts("#{@title},#{@my_movie.year},#{@my_movie.director},#{@my_movie.poster},#{@my_movie.tagline}")
-    f.close
-  end
+    # @result = if @title
+      @my_movie = Imdb::Search.new(@title).movies.first
+      f = File.new('movies.csv', 'a+')
+      f.puts("#{@title},#{@my_movie.year},#{@my_movie.director},#{@my_movie.poster},#{@my_movie.tagline}")
+      f.close
+
   #This will send you to the newly created movie
   redirect to("/movie/#{@title}")
 end
