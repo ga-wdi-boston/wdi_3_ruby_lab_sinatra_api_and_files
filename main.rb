@@ -19,12 +19,6 @@ get '/new_movie' do
   end
 
 
-
-get '/new_movie' do
-
- erb :new_movie
-end
-
 post '/new_movie' do
     @title = params[:title]
     @movie = Imdb::Search.new(@title).movies.first
@@ -54,9 +48,10 @@ get '/movie/:title' do
       then @a_movie = title.split(',')
     end
   end
+  erb :movie
 end
 
-redirect to("/movies/#{@title}")
+# redirect to("/movies/#{@title}")
 
 
 
