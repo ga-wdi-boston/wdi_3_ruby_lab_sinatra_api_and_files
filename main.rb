@@ -21,8 +21,6 @@ get '/movie/:title' do
   f.each do |line|
     if line.split('| ')[0] == @single_movie
       @movie_array = line.split('| ')
-      # @director_list = @movie_array[3]
-      # @genre_list = @movie_array[5]
     end
   end
 
