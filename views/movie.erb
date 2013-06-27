@@ -1,0 +1,11 @@
+<h1><%= @movie %></h1>
+
+<ul>
+<% @movies[@movie].each do |movie_info|%>
+  <li>
+    <%= movie_info %>
+  </li>
+  <% end %>
+</ul>
+
+

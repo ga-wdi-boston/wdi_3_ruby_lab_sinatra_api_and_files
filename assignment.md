@@ -6,8 +6,8 @@
 
 ** Story **
 
-* A user should be able to see a list of their favorite movies
-* A user should be able to add new favorite movies
+* A user should be able to see a list of their favorite movies (get list of movies from file[make a file ourselves], @movies=info from file, <%= movies.each %>)
+* A user should be able to add new favorite movies (take input[get title, form, URL], get info from IMDB, write to file)
 * A user should be able to view information about a favorite single movie
 
 ** BONUS **
