@@ -5,7 +5,7 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 #Lists all movies
-get '/' do
+get '/movies' do
   list_file = File.new('movies.csv', 'r')
   @movies_list = []
   list_file.each do |movie|
@@ -33,19 +33,24 @@ get '/movie_query' do
   erb :movie_query
 end
 
-# Create a new movie by sending a POST request to this URL ##MODIFY COMMENT
+# Pulls new-movie data from IMDB API, inserts into movies.csv
 post '/movie_query' do
   f = File.new('movies.csv', 'a+')
   @title = params[:title]
   my_movie = Imdb::Search.new(@title).movies.first
   @title = my_movie.title
-  @year = my_movie.year
+  @tagline = my_movie.tagline
   @director = my_movie.director
+  @year = my_movie.year
+  @company = my_movie.company
+  @mpaa_rating = my_movie.mpaa_rating
   @poster = my_movie.poster
-  f.puts("#{@title}|#{@year}|#{@director}|#{@poster}")
+  f.puts("#{@title}|#{@tagline}|#{@director}|#{@year}|#{@company}|#{@mpaa_rating}|#{@poster}")
   f.close
   redirect to("/movie/#{URI::encode(@title)}")
 end
 
-
-#Ability to access static HTML about page (i like horror movies)
+#Ability to access static HTML about page
+get '/' do
+  redirect 'about.html'
+end
