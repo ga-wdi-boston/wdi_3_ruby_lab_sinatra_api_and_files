@@ -44,6 +44,6 @@ post '/new_movie' do
   end
   @title = @movie.title
   @img_link = @movie.poster
-  erb :movie
+  redirect to("/movie/#{URI::escape(@title)}")
 end
 
