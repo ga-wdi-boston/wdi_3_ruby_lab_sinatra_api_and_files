@@ -1,0 +1,10 @@
+<%= @my_movie.inspect %>
+
+<h1>add movie to favorite list</h1>
+
+<form action="/new_movie" method="post">
+  <p>Title: <input type="text" name="title" autofocus></p>
+  <button>add movie</button>
+</form>
+
+<%= @title %>

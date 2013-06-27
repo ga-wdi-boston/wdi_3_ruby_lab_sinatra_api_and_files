@@ -1,0 +1,9 @@
+<% @movies.each do |title, movie_data| %>
+  <h1><%= movie_data[0] %></h1>
+    <ul>
+    <li>Year: <%= movie_data[1] %></li>
+    <li>Director: <%= movie_data[2] %></li>
+    <li>Tagline: <%= movie_data[4] %></li>
+    </ul>
+    <a href="<%=movie_data[3]%>"><img src="<%=movie_data[3]%>" width=400/></a>
+<%end%>
