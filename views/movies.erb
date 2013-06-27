@@ -1,0 +1,11 @@
+<h1>Favorite Movies</h1>
+<ul>
+  <% @movies.each do |title, info|%>
+    <li>
+      <a href="/movie/<%= title %>">
+        <%= title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<%= @test_title %>
