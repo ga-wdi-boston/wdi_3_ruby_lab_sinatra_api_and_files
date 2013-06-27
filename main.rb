@@ -9,11 +9,12 @@ require 'imdb'
 
     get '/movies' do
 
-      CSV.open("/movies.csv", "+a") do |csv|
-        csv << ["row", "of", "CSV", "data"]
-        csv << ["another", "row"]
+      movies_file = File.open("/movies.csv", "+a")
+        movie = []
+        movie << ["row", "of", "CSV", "data"]
+        movie << ["another", "row"]
       end
-    end
+
 
 
 
@@ -31,7 +32,11 @@ require 'imdb'
      #  csv  << film
 
 
+get '/new_movie' do
 
+
+ erb :new_movie
+end
 
 post '/movie' do
 
