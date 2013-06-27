@@ -5,7 +5,12 @@ require 'sinatra/reloader' if development?
 require 'imdb'
 
 get '/' do
-  movie_file = File.new('movies.csv', 'a+')
+  movie_file = File.new('movies.csv', 'r')
+  @movies = []
+  movie_file.each do |line|
+    @movies << line.split(',')
+  end
+  movie_file.close
   erb :index
 end
 
