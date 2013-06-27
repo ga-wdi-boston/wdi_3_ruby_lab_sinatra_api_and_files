@@ -3,12 +3,13 @@
 
 <img src="logo.jpg" width=200>
 
-<p>Add a favorite movie</p>
+<p>Add a favorite movie:</p>
 
 <form action="/" method="post">
   <p>Title: <input type="text" name="title" autofocus></p>
   <button>Submit</button>
 </form>
+<br>
 
 <% @movies.each do |movie| %>
   <li>
