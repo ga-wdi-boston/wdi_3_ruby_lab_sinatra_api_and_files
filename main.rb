@@ -36,9 +36,9 @@ post '/new_movie' do
   @title = params[:title]
   new_movie= Imdb::Search.new(@title).movies.first
   @company = new_movie.company
-  @genres = new_movie.genres
+  @genres = new_movie.genres[0]
   @length = new_movie.length
-  @director = new_movie.director
+  @director = new_movie.director[0]
   @mpaa_rating = new_movie.mpaa_rating
   @plot_synopsis = new_movie.plot_synopsis
   @tagline = new_movie.tagline
