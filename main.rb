@@ -7,7 +7,7 @@ require 'imdb'
 
 # Function to prep movie information
 ###remember to change split to |
-def get_movie_hash
+def get_movies_hash
   movie_file = File.new('movies.csv', 'r')
   movies_hash = {}
   movie_file.each do |line|
@@ -22,7 +22,7 @@ end
 
 # This should list all the movies
 get '/' do
-  @movies = movies_hash
+  @movies = get_movies_hash
   erb :movies
 end
 
@@ -32,3 +32,7 @@ get '/movie/:name' do
   erb :movie
 end
 
+# This page should have a form to create a new movie, which will POST to /new_movie
+get '/new_movie' do
+  erb :new_movie
+end
