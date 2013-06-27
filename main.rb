@@ -42,7 +42,8 @@ post '/new_movie' do
   File.open('movies.csv', 'a+') do |file|
     file.puts("#{@movie.title}, #{@movie.year}, #{@movie.poster}")
   end
-
+  @title = @movie.title
+  @img_link = @movie.poster
   erb :movie
 end
 
