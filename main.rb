@@ -25,6 +25,7 @@ list_of_favorite_movies = File.new('movies.csv', 'r')
       @movie_info_array = line.split('|')
     end
   end
+  list_of_favorite_movies.close
   erb :movie
 end
 
@@ -49,5 +50,6 @@ post '/new_movie' do
   #erb :input
   new_movie = File.new('movies.csv', 'a+')
   new_movie.puts("#{@title}|#{@year}|#{@director}|#{@tagline}|#{@poster}")
-  redirect to("/movies/#{URI::encode @title}")
+  new_movie.close
+  redirect to("/")
 end
