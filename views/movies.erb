@@ -1,11 +1,12 @@
 
 <h1>All Movies</h1>
 <ul>
-<% @movies.each do |movie| %>
+<% @movies.each do |title| %>
   <li>
-    <a href="<%= :movies[2] %>">
-    <%= movie[2] %>
+    <a href="/movie/<%= "#{title}"%>"><%="#{title}"%>
   </a>
 </li>
 <%end%>
 </ul>
+
+<a href="/new_movie">Add a movie</a>
