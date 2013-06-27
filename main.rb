@@ -25,7 +25,6 @@ end
 
 post '/new_movie' do
 
-
  erb :new_movie
 end
 
@@ -42,14 +41,13 @@ get '/movies' do
   erb :movies
 end
 
+get '/movie/:name' do
 
-
-
-
-
-def movie_getter()
-my_movie = Imdb::Search.new(name).movies.first
-puts my_movie.title
-puts my_movie.poster
-puts my_movie.year
 end
+
+# def movie_getter()
+# my_movie = Imdb::Search.new(name).movies.first
+# puts my_movie.title
+# puts my_movie.poster
+# puts my_movie.year
+# end
