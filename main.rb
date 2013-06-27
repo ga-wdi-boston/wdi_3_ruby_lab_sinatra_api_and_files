@@ -7,6 +7,11 @@ require 'imdb'
 get '/' do
 
 @movie_title = params[:movie_title]
+@single_movie = []
+@movies_list = File.new('movies.csv', 'a+')
+@movies_list.each do |title|
+  title.split(',')
+
 if @movie_title
     redirect to "/movies/#{@movie_title}"
   else
@@ -33,6 +38,11 @@ post '/new_movie' do
   movies = File.open('movies.csv', 'a+') do |title|
    title.puts("#{@movie.title},#{@movie.year},#{@movie.director[0]},#{@movie.poster}")
   end
+
+
+
+# ----------------------------------------
+# These are from examples, for reference.
 
 # post '/new_movie/:movie_title' do
 #   @title = params[:movie_title]
