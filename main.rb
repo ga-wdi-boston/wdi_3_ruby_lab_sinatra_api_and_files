@@ -28,8 +28,14 @@ end
 
 get '/movie/:name' do
   @name = params[:name]
-  @movies = get_movie_hash
-  @movie = @movies[@name]
+  movie_file = File.new('movies.csv', 'r')
+  @movie_info = []
+  movie_file.each do |line|
+    if line.split(',')[0] == @name
+      @movie_info = line.split(',')
+    end
+  end
+  movie_file.close
   erb :movie
 end
 
