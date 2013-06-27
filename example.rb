@@ -5,9 +5,17 @@ require 'imdb'
 
 # Use the first search result. Here I'm searching for the "Jobs" movie.
 my_movie = Imdb::Search.new("Jobs").movies.first
-puts my_movie.title
-puts my_movie.poster
-puts my_movie.year
+#puts my_movie.title
+#puts my_movie.poster
+#puts my_movie.year
+
+file = File.new("movies.csv", "r")
+@movie_list = []
+file.each do |movie|
+  @movie_list << movie.split("|")
+end
+
+puts @movie_list[0][0].inspect
 
 
 #### Methods on an individual movie

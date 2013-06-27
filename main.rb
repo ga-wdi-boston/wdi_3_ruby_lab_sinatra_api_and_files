@@ -13,22 +13,19 @@ get '/' do
   file.each do |movie|
     @movie_list << movie.split("|")
   end
-  file.close
-
 
   #this is for the input form
   if @title
     movie = Imdb::Search.new(@title).movies.first
     @movie_title = movie.title
     @movie_company = movie.company
-
-    file = File.new('movies.csv', "a+")
-    file.puts("#{@movie_title}|#{@movie_company}")
-    file.close
-    redirect to("/movies/#{URI::encode(@movie_title)}")
-
-  else
-    ""
+      if @movie_list[0][0]
+        redirect to("/movies/#{URI::encode(@movie_title)}")
+      else
+        file.puts("#{@movie_title}|#{@movie_company}")
+        file.close
+        redirect to("/movies/#{URI::encode(@movie_title)}")
+      end
   end
   erb :root
 end
