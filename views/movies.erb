@@ -1,0 +1,16 @@
+<h1>FAVORITE MOVIES</h1>
+
+<ul>
+<% @movies.each do |title, movie_data| %>
+  <li>
+    <a href="/favorite_movies/<%= title %>">
+      <%= "#{title}" %>
+    </a>
+</li>
+<% end %>
+</ul>
+
+
+
+
+
