@@ -25,5 +25,14 @@ end
 
 get '/movie/:title' do
   @title = params[:title]
-  erb :movie
+  # @title = params[:name]
+  @movies = []
+  movie_file = File.new('movies.csv', 'r')
+  movie_file.each do |line|
+      if line.split(",")[0] == @title then
+        @movies = line.split(",")
+      end
+  end
+  movie_file.close
+   erb :movie
 end
