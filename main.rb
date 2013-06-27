@@ -46,7 +46,7 @@ end
 get '/movie/:movie_title' do
 	f = File.new('movies.csv', 'r')
 	f.each do |line|
-		if line.split('|')[0] == params[:movie_title]
+		if line.split('|')[0] == "#{URI::decode(params[:movie_title])}"
 			@movie = line
 			erb :movie
 		end
