@@ -1,0 +1,15 @@
+<h1>My favorite movie: <%=@favorite_movie_data[:title]%></h1>
+
+<img src="<%= @favorite_movie_data[:poster] %>" height=300px />
+
+<p>About this movie:</p>
+<ul>
+  <li>Title: <%= @favorite_movie_data[:title] %></li>
+  <li>Release Date: <%= @favorite_movie_data[:release_date] %></li>
+  <li>Company: <%= @favorite_movie_data[:company] %></li>
+  <li>Genres: <%= @favorite_movie_data[:genres] %></li>
+  <li>Length(mins): <%= @favorite_movie_data[:length] %></li>
+  <li>Director: <%= @favorite_movie_data[:director] %></li>
+  <li>MPAA Rating: <%= @favorite_movie_data[:mpaa_rating] %></li>
+  <li>Tagline: <%= @favorite_movie_data[:tagline] %></li>
+</ul>
