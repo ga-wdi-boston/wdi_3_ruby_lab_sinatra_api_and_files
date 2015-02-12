@@ -1,0 +1,11 @@
+<p><a href="/new_movie">Add a Movie</a><p>
+
+  <h1>List of Movies:</h1>
+  <ul>
+    <% @movies.each do |line| %>
+     <li>
+        <a href='/movies/<%= line[0] %>'><%= line[0] %>, <%= line[1] %></a>
+     </li>
+     <% end %>
+  </ul>
+
