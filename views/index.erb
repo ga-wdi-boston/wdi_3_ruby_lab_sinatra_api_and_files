@@ -1,0 +1,22 @@
+<h1>Movies</h1>
+<h3><a href="/about">About me</a></h3>
+
+<img src="logo.jpg" width=200>
+
+<p>Add a favorite movie:</p>
+
+<form action="/" method="post">
+  <p>Title: <input type="text" name="title" autofocus></p>
+  <button>Submit</button>
+</form>
+<br>
+
+<% @movies.each do |movie| %>
+  <li>
+    <a href="/movie/<%= movie[0] %>">
+      <%= movie[0] %>
+    </a>
+  </li>
+<% end %>
+</ul>
+
