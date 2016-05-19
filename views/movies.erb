@@ -1,0 +1,9 @@
+<h1>My Favorite Movies</h1>
+
+<ul>
+<% @movie_titles.each do |title| %>
+  <li><a href='/movie/<%= "#{title}" %>'><%= "#{title}" %></a></li>
+<% end %>
+</ul>
+
+<a href="/new_movie">Add a new movie</a>
